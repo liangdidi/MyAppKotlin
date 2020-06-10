@@ -1,11 +1,11 @@
 package com.ldd.mak
 
-import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import android.util.Log
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+class MainActivity :BaseActivity() {
+    override fun isWantTitleBar()=true
+    override fun getLayoutId()=R.layout.activity_main
+    override fun initData() {
+        Log.i(TAG,"====initData====")
     }
 }
