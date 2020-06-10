@@ -1,11 +1,23 @@
 package com.ldd.mak
 
+import android.view.View
 import com.ldd.base.ui.activity.BaseLddActivity
 
 abstract class BaseActivity : BaseLddActivity() {
-    override fun getTitleBarId()=0
+    override fun getTitleBarId()=R.layout.l_coustom_title_bar
 
-    override fun initSetting() {
+    override fun initSetting() {}
+
+    private var firstTime: Long = 0
+    fun onCloseActivity(view: View){
+        //=====================防止快速点击左上角返回，关闭上个页面=======================
+        val secondTime = System.currentTimeMillis()
+        if (secondTime - firstTime < 800) {
+            return
+        }
+        firstTime = secondTime
+        //=====================防止快速点击左上角返回，关闭上个页面=======================
+        finishActivityCustom()
     }
 
 }

@@ -1,11 +1,16 @@
 package com.ldd.base.ui.activity
 
+import android.app.Activity
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.gyf.immersionbar.ImmersionBar
 import com.ldd.base.R
+import com.ldd.base.util.ActivityManageUtil
 import kotlinx.android.synthetic.main.ac_base.*
 import kotlinx.android.synthetic.main.l_default_title_bar.*
 
@@ -13,7 +18,8 @@ import kotlinx.android.synthetic.main.l_default_title_bar.*
  * 基类Activity
  * 1、简单的标题栏
  * 2、沉浸式状态栏效果，默认白色背景
- * 3、
+ * 3、界面管理工具类ActivityManageUtil
+ * 4、封装页面跳转
  *
  * 自定义：使用自定义的标题栏，自定义抽象基类，重写getTitleBarId（）方法
  * 自定义：更改沉浸式状态栏颜色，自定义抽象基类，重写initSetting（）方法，调用mImmersionBar设置
@@ -27,6 +33,7 @@ abstract class BaseLddActivity : AppCompatActivity() {
         setContentView(R.layout.ac_base)
         TAG = this.localClassName
         mContext = this
+        ActivityManageUtil.addActivity(this)
 
         //是否想要标题
         if (isWantTitleBar()) {
@@ -89,9 +96,91 @@ abstract class BaseLddActivity : AppCompatActivity() {
      * 设置标题名称
      */
     fun setTitleBarName(name:String){
-        tvDefaultTitleBarTitle.text=name
+        tvDefaultTitleBarTitle?.text=name
     }
 
 
+    //========================================关闭界面=============================================================================
+    private var firstTime: Long = 0
+    /**
+     * 标题返回键 点击事件
+     */
+    fun onFinishActivity(view: View) {
+        Log.i(TAG, "=====onFinishActivity=====")
+        //=====================防止快速点击左上角返回，关闭上个页面=======================
+        val secondTime = System.currentTimeMillis()
+        if (secondTime - firstTime < 800) {
+            return
+        }
+        firstTime = secondTime
+        //=====================防止快速点击左上角返回，关闭上个页面=======================
+        finishActivityCustom()
+    }
+
+    /**
+     * 关闭界面
+     */
+    fun finishActivityCustom(){
+        ActivityManageUtil.finishCurrentActivity()
+    }
+
+    /**
+     * 返回键
+     */
+    override fun onBackPressed() {
+        Log.i(TAG, "=====onBackPressed=====")
+        finishActivityCustom()
+    }
+
+    //========================================跳转界面=============================================================================
+
+    /**
+     * 打开新页面 并关闭当前页面
+     */
+    fun startActivityAndFinish(mClass: Class<*>) {
+        startActivityCustom(mClass)
+        finishActivityCustom()
+    }
+
+    /**
+     * 跳转到新的页面
+     */
+    fun startActivityCustom(mClass: Class<*>){
+        startActivityCustom(mClass,null)
+    }
+    /**
+     * 携带数据跳转到新的页面
+     */
+    fun startActivityCustom(mClass: Class<*>,bundle:Bundle?){
+        val mIntent=Intent(mContext,mClass)
+        bundle?.let { mIntent.putExtras(it) }
+        startActivity(mIntent)
+    }
+    /**
+     * 携带数据跳转到新的页面，并返回结果
+     */
+    fun startActivityCustom(mClass: Class<*>,bundle:Bundle?,requestCode:Int){
+        val mIntent=Intent(mContext,mClass)
+        bundle?.let { mIntent.putExtras(it) }
+        startActivityForResult(mIntent,requestCode)
+    }
+
+    //========================================toast弹框=============================================================================
+    private var toast:Toast?=null
+
+    /**
+     * Toast 弹框，可以传任意类型
+     */
+    fun showToast(any:Any){
+        runOnUiThread {
+            if (toast == null) {
+                toast = Toast.makeText(mContext, null, Toast.LENGTH_SHORT)
+            }
+            toast?.let {
+                it.setText(any.toString())
+                it.show()
+            }
+        }
+    }
 
 }
