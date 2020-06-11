@@ -1,6 +1,5 @@
 package com.ldd.base.ui.activity
 
-import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -11,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.gyf.immersionbar.ImmersionBar
 import com.ldd.base.R
 import com.ldd.base.util.ActivityManageUtil
+import com.ldd.base.util.PermissionUtil
 import kotlinx.android.synthetic.main.ac_base.*
 import kotlinx.android.synthetic.main.l_default_title_bar.*
 
@@ -181,6 +181,23 @@ abstract class BaseLddActivity : AppCompatActivity() {
                 it.show()
             }
         }
+    }
+
+    //========================================权限请求=============================================================================
+
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        PermissionUtil.onRequestPermissionsResult(requestCode,
+            permissions as Array<String>,grantResults)
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        PermissionUtil.onActivityResult(requestCode)
     }
 
 }
