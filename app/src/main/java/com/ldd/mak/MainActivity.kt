@@ -1,5 +1,6 @@
 package com.ldd.mak
 
+import android.util.Log
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity :BaseActivity() {
@@ -8,6 +9,7 @@ class MainActivity :BaseActivity() {
     override fun initData() {
         setTitleBarName("首页")
         tvMain.setOnClickListener {
+            Log.i(TAG,"测试")
             startActivityCustom(FirstActivity::class.java)
         }
     }

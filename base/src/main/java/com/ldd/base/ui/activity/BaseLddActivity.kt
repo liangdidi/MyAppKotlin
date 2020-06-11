@@ -31,7 +31,7 @@ abstract class BaseLddActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.ac_base)
-        TAG = this.localClassName
+        TAG = this::class.java.simpleName
         mContext = this
         ActivityManageUtil.addActivity(this)
 
@@ -187,12 +187,12 @@ abstract class BaseLddActivity : AppCompatActivity() {
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
-        permissions: Array<out String>,
+        permissions: Array<String>,
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         PermissionUtil.onRequestPermissionsResult(requestCode,
-            permissions as Array<String>,grantResults)
+            permissions,grantResults)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
