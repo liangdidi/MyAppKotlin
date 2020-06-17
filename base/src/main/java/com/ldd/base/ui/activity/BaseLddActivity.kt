@@ -95,7 +95,7 @@ abstract class BaseLddActivity : AppCompatActivity() {
     /**
      * 设置标题名称
      */
-    fun setTitleBarName(name:String){
+    open fun setTitleBarName(name:String){
         tvDefaultTitleBarTitle?.text=name
     }
 
