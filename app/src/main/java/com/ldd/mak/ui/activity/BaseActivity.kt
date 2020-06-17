@@ -1,10 +1,11 @@
-package com.ldd.mak
+package com.ldd.mak.ui.activity
 
 import android.view.View
 import com.ldd.base.ui.activity.BaseLddActivity
+import com.ldd.mak.R
 
 abstract class BaseActivity : BaseLddActivity() {
-    override fun getTitleBarId()=R.layout.l_coustom_title_bar
+    override fun getTitleBarId()= R.layout.l_coustom_title_bar
 
     override fun initSetting() {}
 
