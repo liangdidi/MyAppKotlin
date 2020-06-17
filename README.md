@@ -1,2 +1,2 @@
-# MyAppKotlin
+# MyKotlinApp
 快使用kotlin
