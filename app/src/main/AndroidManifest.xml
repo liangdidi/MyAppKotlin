@@ -22,6 +22,8 @@
 
         <!--申请权限-->
         <activity android:name=".ui.activity.PermissionActivity" />
+        <!--列表-->
+        <activity android:name=".ui.activity.NestListActivity" />
 
     </application>
 

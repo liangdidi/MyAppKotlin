@@ -10,14 +10,13 @@ class MainActivity :BaseActivity() {
     override fun initData() {
         setTitleBarName("首页")
 
-        val list= listOf("1、权限申请")
+        val list= listOf("1、权限申请","2、列表嵌套")
         listView.adapter= MainAdapter(mContext,list)
+
         listView.setOnItemClickListener { parent, view, position, id ->
-            val content=parent.getItemAtPosition(position)
-            when(content){
-                "权限申请"-> {
-                    startActivityCustom(PermissionActivity::class.java)
-                }
+            when(parent.getItemAtPosition(position)){
+                "1、权限申请"-> startActivityCustom(PermissionActivity::class.java)
+                "2、列表嵌套"-> startActivityCustom(NestListActivity::class.java)
             }
         }
 
