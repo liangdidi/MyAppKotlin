@@ -51,7 +51,17 @@ class NestListActivity : BaseActivity() {
                 listOf("", "", "")
             )
         )
-        recyclerView.layoutManager = LinearLayoutManager(mContext)
+
+        val linearLayoutManager: LinearLayoutManager = object : LinearLayoutManager(mContext) {
+            override fun canScrollVertically(): Boolean {
+                return false
+            }
+        }
+        recyclerView.layoutManager = linearLayoutManager
         recyclerView.adapter = NestList1Adapter(mContext, list)
     }
+
+
+
+
 }
