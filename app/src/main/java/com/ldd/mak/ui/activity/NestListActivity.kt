@@ -52,13 +52,10 @@ class NestListActivity : BaseActivity() {
             )
         )
 
-        val linearLayoutManager: LinearLayoutManager = object : LinearLayoutManager(mContext) {
-            override fun canScrollVertically(): Boolean {
-                return false
-            }
-        }
-        recyclerView.layoutManager = linearLayoutManager
+        recyclerView.layoutManager = LinearLayoutManager(mContext)
         recyclerView.adapter = NestList1Adapter(mContext, list)
+        recyclerView.setHasFixedSize(true);
+        recyclerView.isNestedScrollingEnabled = false;
     }
 
 
