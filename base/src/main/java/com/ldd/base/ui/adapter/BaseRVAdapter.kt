@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
  * 基本的RecyclerView适配器
  */
 abstract class BaseRVAdapter<T>(
-    private val mContext: Context,
+    val mContext: Context,
     private val list: List<T>
 ) : RecyclerView.Adapter<BaseRVVH>() {
 

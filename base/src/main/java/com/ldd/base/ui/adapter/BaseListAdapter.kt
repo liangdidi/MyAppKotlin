@@ -10,7 +10,7 @@ import android.widget.BaseAdapter
  * 适用于ListView,GridView
  */
 abstract class BaseListAdapter<T>(
-    private val mContext: Context,
+    val mContext: Context,
     private val list: List<T>
 ) : BaseAdapter() {
 
