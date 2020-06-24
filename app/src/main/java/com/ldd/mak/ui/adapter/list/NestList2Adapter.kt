@@ -12,7 +12,7 @@ import com.ldd.base.ui.adapter.BaseRVAdapter
 import com.ldd.base.ui.adapter.BaseRVVH
 import com.ldd.mak.R
 
-class NestList2Adapter(var mContext: Context, list: List<List<String>>) : BaseRVAdapter<List<String>>(mContext, list) {
+class NestList2Adapter(mContext: Context, list: List<List<String>>) : BaseRVAdapter<List<String>>(mContext, list) {
     override fun getLayoutId(viewType: Int)= R.layout.item_nest_list2
 
     override fun convert(vh: BaseRVVH, position: Int, data: List<String>) {

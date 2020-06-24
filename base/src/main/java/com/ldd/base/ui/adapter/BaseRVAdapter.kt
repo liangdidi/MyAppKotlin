@@ -10,7 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
  */
 abstract class BaseRVAdapter<T>(
     val mContext: Context,
-    private val list: List<T>
+    val list: List<T>
 ) : RecyclerView.Adapter<BaseRVVH>() {
 
     //子类实现

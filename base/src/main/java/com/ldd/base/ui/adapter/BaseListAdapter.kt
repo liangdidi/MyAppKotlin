@@ -11,7 +11,7 @@ import android.widget.BaseAdapter
  */
 abstract class BaseListAdapter<T>(
     val mContext: Context,
-    private val list: List<T>
+    val list: List<T>
 ) : BaseAdapter() {
 
     //子类实现
