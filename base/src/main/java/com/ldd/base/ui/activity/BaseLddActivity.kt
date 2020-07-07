@@ -30,6 +30,8 @@ abstract class BaseLddActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //初始化设置
+        initSetting()
         setContentView(R.layout.ac_base)
         TAG = this::class.java.simpleName
         mContext = this
@@ -52,8 +54,6 @@ abstract class BaseLddActivity : AppCompatActivity() {
 
         //设置沉浸式状态栏效果
         setImmersionBar()
-        //初始化设置
-        initSetting()
         //初始化数据
         initData()
     }
