@@ -24,6 +24,8 @@
         <activity android:name=".ui.activity.PermissionActivity" />
         <!--列表-->
         <activity android:name=".ui.activity.NestListActivity" />
+        <!--获取屏幕参数-->
+        <activity android:name=".ui.activity.GetScreenParamActivity" />
 
     </application>
 
