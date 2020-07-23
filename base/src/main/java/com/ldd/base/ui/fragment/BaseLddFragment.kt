@@ -22,11 +22,12 @@ abstract class BaseLddFragment : Fragment() {
         TAG = this::class.java.simpleName
         mContext= activity!!
 
-        return inflater.inflate(
-            if (0 == getLayoutId()) R.layout.l_default_content else getLayoutId(),
-            container,
-            false
-        )
+        val resource:Int = if (0 == getLayoutId()){
+            R.layout.l_default_content
+        }else{
+            getLayoutId()
+        }
+        return inflater.inflate(resource,container,false)
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
