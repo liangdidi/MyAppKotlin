@@ -31,6 +31,7 @@ abstract class BaseLddFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        initSetting()
         initData()
     }
 
@@ -39,8 +40,8 @@ abstract class BaseLddFragment : Fragment() {
     protected abstract fun getLayoutId(): Int
     /**初始化数据 */
     protected abstract fun initData()
-
-
+    /**初始化自定义的设置 */
+    protected open fun initSetting() {}
 
 
     //========================================跳转界面=============================================================================
