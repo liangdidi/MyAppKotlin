@@ -1,10 +1,11 @@
 package com.ldd.mak.ui.activity
 
 import com.ldd.mak.R
+import com.ldd.mak.ui.base.BaseActivity
 import com.ldd.mak.ui.adapter.MainAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity :BaseActivity() {
+class MainActivity : BaseActivity() {
     override fun isWantTitleBar()=true
     override fun getLayoutId()= R.layout.activity_main
     override fun initData() {

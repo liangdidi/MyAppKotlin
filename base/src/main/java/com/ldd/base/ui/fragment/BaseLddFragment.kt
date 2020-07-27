@@ -1,5 +1,6 @@
 package com.ldd.base.ui.fragment
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -10,6 +11,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.ldd.base.R
 
+/**
+ * 基本的Fragment
+ * 1、封装页面跳转
+ * 2、Toast提示
+ */
 abstract class BaseLddFragment : Fragment() {
     var TAG: String = ""
     lateinit var mContext: Context
@@ -23,7 +29,7 @@ abstract class BaseLddFragment : Fragment() {
         mContext= activity!!
 
         val resource:Int = if (0 == getLayoutId()){
-            R.layout.l_default_content
+            R.layout.l_default_fg_content
         }else{
             getLayoutId()
         }
@@ -53,20 +59,25 @@ abstract class BaseLddFragment : Fragment() {
     fun startActivityCustom(mClass: Class<*>){
         startActivityCustom(mClass,null)
     }
+    var mIntent:Intent?=null
     /**
      * 携带数据跳转到新的页面
      */
     fun startActivityCustom(mClass: Class<*>,bundle:Bundle?){
-        val mIntent= Intent(mContext,mClass)
-        bundle?.let { mIntent.putExtras(it) }
+        if(null==mIntent){
+            mIntent= Intent(mContext,mClass)
+        }
+        bundle?.let { mIntent?.putExtras(it) }
         startActivity(mIntent)
     }
     /**
      * 携带数据跳转到新的页面，并返回结果
      */
     fun startActivityCustom(mClass: Class<*>,bundle:Bundle?,requestCode:Int){
-        val mIntent= Intent(mContext,mClass)
-        bundle?.let { mIntent.putExtras(it) }
+        if(null==mIntent){
+            mIntent= Intent(mContext,mClass)
+        }
+        bundle?.let { mIntent?.putExtras(it) }
         startActivityForResult(mIntent,requestCode)
     }
 
@@ -76,6 +87,7 @@ abstract class BaseLddFragment : Fragment() {
     /**
      * Toast 弹框，可以传任意类型
      */
+    @SuppressLint("ShowToast")
     fun showToast(any:Any){
         activity?.runOnUiThread {
             if (toast == null) {

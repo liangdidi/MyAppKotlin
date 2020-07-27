@@ -4,6 +4,7 @@ import android.Manifest
 import android.app.Activity
 import com.ldd.base.util.PermissionUtil
 import com.ldd.mak.R
+import com.ldd.mak.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.ac_permission.*
 
 /**

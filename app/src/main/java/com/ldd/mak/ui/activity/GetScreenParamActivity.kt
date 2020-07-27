@@ -1,13 +1,14 @@
 package com.ldd.mak.ui.activity
 
 import com.ldd.mak.R
+import com.ldd.mak.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.ac_get_screen_param.*
 
 
 /**
  * 获取屏幕参数
  */
-class GetScreenParamActivity :BaseActivity() {
+class GetScreenParamActivity : BaseActivity() {
     override fun isWantTitleBar()=true
 
     override fun getLayoutId()=R.layout.ac_get_screen_param

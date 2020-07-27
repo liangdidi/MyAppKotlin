@@ -2,6 +2,7 @@ package com.ldd.mak.ui.activity
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ldd.mak.R
+import com.ldd.mak.ui.base.BaseActivity
 import com.ldd.mak.ui.adapter.list.NestList1Adapter
 import kotlinx.android.synthetic.main.ac_nest_list.*
 
