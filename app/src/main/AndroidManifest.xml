@@ -26,6 +26,8 @@
         <activity android:name=".ui.activity.NestListActivity" />
         <!--获取屏幕参数-->
         <activity android:name=".ui.activity.GetScreenParamActivity" />
+        <!--加载Fragment-->
+        <activity android:name=".ui.activity.LoadingFragmentActivity" />
 
     </application>
 
