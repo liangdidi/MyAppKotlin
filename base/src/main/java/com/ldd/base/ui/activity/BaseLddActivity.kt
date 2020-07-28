@@ -94,8 +94,9 @@ abstract class BaseLddActivity : AppCompatActivity() {
      */
     fun startActivityCustom(mClass: Class<*>,bundle:Bundle?){
         if(null==mIntent){
-            mIntent=Intent(mContext,mClass)
+            mIntent=Intent()
         }
+        mIntent?.setClass(mContext,mClass)
         bundle?.let { mIntent?.putExtras(it) }
         startActivity(mIntent)
     }
@@ -104,8 +105,9 @@ abstract class BaseLddActivity : AppCompatActivity() {
      */
     fun startActivityCustom(mClass: Class<*>,bundle:Bundle?,requestCode:Int){
         if(null==mIntent){
-            mIntent=Intent(mContext,mClass)
+            mIntent=Intent()
         }
+        mIntent?.setClass(mContext,mClass)
         bundle?.let { mIntent?.putExtras(it) }
         startActivityForResult(mIntent,requestCode)
     }
