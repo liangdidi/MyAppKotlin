@@ -1,6 +1,7 @@
 package com.ldd.mak.ui.activity
 
 import com.ldd.mak.R
+import com.ldd.mak.ui.activity.jetpack.livedata.LiveDataActivity
 import com.ldd.mak.ui.activity.jetpack.viewmodel.ViewModelActivity
 import com.ldd.mak.ui.base.BaseActivity
 import com.ldd.mak.ui.adapter.MainAdapter
@@ -13,7 +14,7 @@ class MainActivity : BaseActivity() {
         setTitleBarName("首页")
 
         val list= listOf("1、权限申请","2、列表嵌套","3、获取屏幕分辨率"
-            ,"4、加载fragment","5、ViewModel简单使用"
+            ,"4、加载fragment","5、ViewModel简单使用","6、LiveData简单使用"
         )
         listView.adapter= MainAdapter(mContext,list)
 
@@ -24,6 +25,7 @@ class MainActivity : BaseActivity() {
                 "3、获取屏幕分辨率"-> startActivityCustom(GetScreenParamActivity::class.java)
                 "4、加载fragment"-> startActivityCustom(LoadingFragmentActivity::class.java)
                 "5、ViewModel简单使用"-> startActivityCustom(ViewModelActivity::class.java)
+                "6、LiveData简单使用"-> startActivityCustom(LiveDataActivity::class.java)
             }
         }
 
