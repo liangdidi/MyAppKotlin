@@ -1,6 +1,7 @@
 package com.ldd.mak.ui.activity
 
 import com.ldd.mak.R
+import com.ldd.mak.ui.activity.jetpack.databinding.DataBindingActivity
 import com.ldd.mak.ui.activity.jetpack.livedata.LiveDataActivity
 import com.ldd.mak.ui.activity.jetpack.viewmodel.ViewModelActivity
 import com.ldd.mak.ui.base.BaseActivity
@@ -15,6 +16,7 @@ class MainActivity : BaseActivity() {
 
         val list= listOf("1、权限申请","2、列表嵌套","3、获取屏幕分辨率"
             ,"4、加载fragment","5、ViewModel简单使用","6、LiveData简单使用"
+            ,"7、DataBinding简单使用"
         )
         listView.adapter= MainAdapter(mContext,list)
 
@@ -26,6 +28,7 @@ class MainActivity : BaseActivity() {
                 "4、加载fragment"-> startActivityCustom(LoadingFragmentActivity::class.java)
                 "5、ViewModel简单使用"-> startActivityCustom(ViewModelActivity::class.java)
                 "6、LiveData简单使用"-> startActivityCustom(LiveDataActivity::class.java)
+                "7、DataBinding简单使用"-> startActivityCustom(DataBindingActivity::class.java)
             }
         }
 

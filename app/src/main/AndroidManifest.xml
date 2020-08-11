@@ -40,8 +40,10 @@
             android:screenOrientation="portrait" />
         <!--ViewModel简单使用，可翻转屏幕-->
         <activity android:name=".ui.activity.jetpack.viewmodel.ViewModelActivity" />
-        <!--ViewModel简单使用，可翻转屏幕-->
+        <!--LiveData简单使用，可翻转屏幕-->
         <activity android:name=".ui.activity.jetpack.livedata.LiveDataActivity" />
+        <!--DataBinding简单使用，可翻转屏幕-->
+        <activity android:name=".ui.activity.jetpack.databinding.DataBindingActivity" />
 
     </application>
 

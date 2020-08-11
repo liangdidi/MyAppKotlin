@@ -18,6 +18,7 @@ class LiveDataActivity :BaseActivity() {
     }
 
     override fun initData() {
+        setTitleBarName("LiveData简单使用")
         myViewModel.number.observe(this, Observer<Int>{
             tvNumber.text=it.toString()
         })
