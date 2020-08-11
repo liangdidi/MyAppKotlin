@@ -1,6 +1,7 @@
 package com.ldd.mak.ui.activity
 
 import com.ldd.mak.R
+import com.ldd.mak.ui.activity.jetpack.viewmodel.ViewModelActivity
 import com.ldd.mak.ui.base.BaseActivity
 import com.ldd.mak.ui.adapter.MainAdapter
 import kotlinx.android.synthetic.main.activity_main.*
@@ -12,7 +13,7 @@ class MainActivity : BaseActivity() {
         setTitleBarName("首页")
 
         val list= listOf("1、权限申请","2、列表嵌套","3、获取屏幕分辨率"
-            ,"4、加载fragment"
+            ,"4、加载fragment","5、ViewModel简单使用"
         )
         listView.adapter= MainAdapter(mContext,list)
 
@@ -22,6 +23,7 @@ class MainActivity : BaseActivity() {
                 "2、列表嵌套"-> startActivityCustom(NestListActivity::class.java)
                 "3、获取屏幕分辨率"-> startActivityCustom(GetScreenParamActivity::class.java)
                 "4、加载fragment"-> startActivityCustom(LoadingFragmentActivity::class.java)
+                "5、ViewModel简单使用"-> startActivityCustom(ViewModelActivity::class.java)
             }
         }
 
