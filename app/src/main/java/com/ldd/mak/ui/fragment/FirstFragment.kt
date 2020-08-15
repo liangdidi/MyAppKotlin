@@ -1,6 +1,7 @@
 package com.ldd.mak.ui.fragment
 
 import com.ldd.mak.R
+import com.ldd.mak.ui._base.BaseFragment
 import kotlinx.android.synthetic.main.ac_second.*
 
 class FirstFragment: BaseFragment() {

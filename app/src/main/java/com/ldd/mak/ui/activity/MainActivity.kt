@@ -4,7 +4,7 @@ import com.ldd.mak.R
 import com.ldd.mak.ui.activity.jetpack.databinding.DataBindingActivity
 import com.ldd.mak.ui.activity.jetpack.livedata.LiveDataActivity
 import com.ldd.mak.ui.activity.jetpack.viewmodel.ViewModelActivity
-import com.ldd.mak.ui.base.BaseActivity
+import com.ldd.mak.ui._base.BaseActivity
 import com.ldd.mak.ui.adapter.MainAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 

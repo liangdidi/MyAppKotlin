@@ -3,13 +3,13 @@ package com.ldd.mak.ui.activity.jetpack.livedata
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.ldd.mak.R
-import com.ldd.mak.ui.base.BaseActivity
+import com.ldd.mak.ui._base.BaseActivity
 import kotlinx.android.synthetic.main.ac_jetpack_view_model.*
 
 /**
  * LiveData 是一种可观察的数据存储器类，具有生命周期感知能力
  */
-class LiveDataActivity :BaseActivity() {
+class LiveDataActivity : BaseActivity() {
     override fun isWantTitleBar()=true
     override fun getLayoutId()= R.layout.ac_jetpack_view_model
 

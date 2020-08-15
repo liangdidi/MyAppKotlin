@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.ldd.mak.R
-import com.ldd.mak.ui.base.BaseActivity
+import com.ldd.mak.ui._base.BaseActivity
 import kotlinx.android.synthetic.main.ac_jetpack_view_model.*
 
 /**

@@ -1,7 +1,7 @@
 package com.ldd.mak.ui.activity
 
 import com.ldd.mak.R
-import com.ldd.mak.ui.base.BaseActivity
+import com.ldd.mak.ui._base.BaseActivity
 
 
 /**

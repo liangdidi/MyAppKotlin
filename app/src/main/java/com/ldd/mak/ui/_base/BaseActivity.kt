@@ -1,4 +1,4 @@
-package com.ldd.mak.ui.base
+package com.ldd.mak.ui._base
 
 import android.os.Bundle
 import android.util.Log
@@ -28,10 +28,12 @@ abstract class BaseActivity : BaseLddActivity() {
             } else {
                 setContentView(getLayoutId())
             }
+            //初始化数据
+            initData()
+        }else{
+            showToast("没有设置布局ID")
         }
 
-        //初始化数据
-        initData()
     }
 
     /**

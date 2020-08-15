@@ -1,4 +1,4 @@
-package com.ldd.mak.ui.fragment
+package com.ldd.mak.ui._base
 
 import com.ldd.base.ui.fragment.BaseLddFragment
 
