@@ -56,7 +56,7 @@ class NestListActivity : BaseActivity() {
         recyclerView.layoutManager = LinearLayoutManager(mContext)
         recyclerView.adapter = NestList1Adapter(mContext, list)
         recyclerView.setHasFixedSize(true)
-        recyclerView.isNestedScrollingEnabled = false;
+//        recyclerView.isNestedScrollingEnabled = false;
     }
 
 
