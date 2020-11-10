@@ -2,12 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.ldd.mak">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
+        android:name=".MyAPP"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
@@ -44,6 +48,8 @@
         <activity android:name=".ui.activity.jetpack.livedata.LiveDataActivity" />
         <!--DataBinding简单使用，可翻转屏幕-->
         <activity android:name=".ui.activity.jetpack.databinding.DataBindingActivity" />
+
+        <activity android:name=".ui.activity.MVVMNetWorkActivity" />
 
     </application>
 

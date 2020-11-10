@@ -52,7 +52,7 @@ abstract class BaseLddFragment : Fragment() {
         Log.i(TAG,"=============onResume============")
         //没有初始化，开始初始化数据
         if (!isInit) {
-            visibleInitData()
+            initData()
             isInit = true
         }
         refreshData()
@@ -65,7 +65,7 @@ abstract class BaseLddFragment : Fragment() {
     /**onCreateView完成 */
     protected open fun onCreateViewFinish() {}
     /**初始化数据 */
-    protected abstract fun visibleInitData()
+    protected abstract fun initData()
     /**刷新数据 */
     protected open fun refreshData() {}
     /**初始化自定义的设置 */
