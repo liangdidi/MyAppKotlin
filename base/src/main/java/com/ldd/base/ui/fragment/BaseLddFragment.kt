@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,15 +39,35 @@ abstract class BaseLddFragment : Fragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+        Log.i(TAG,"=============onActivityCreated============")
         initSetting()
-        initData()
+        onCreateViewFinish()
     }
+
+
+    /**是否初始化**/
+    private var isInit = false
+    override fun onResume() {
+        super.onResume()
+        Log.i(TAG,"=============onResume============")
+        //没有初始化，开始初始化数据
+        if (!isInit) {
+            visibleInitData()
+            isInit = true
+        }
+        refreshData()
+    }
+
 
     //========================================子类实现的方法=============================================================================
     /**设置布局文件的ID */
     protected abstract fun getLayoutId(): Int
+    /**onCreateView完成 */
+    protected open fun onCreateViewFinish() {}
     /**初始化数据 */
-    protected abstract fun initData()
+    protected abstract fun visibleInitData()
+    /**刷新数据 */
+    protected open fun refreshData() {}
     /**初始化自定义的设置 */
     protected open fun initSetting() {}
 
