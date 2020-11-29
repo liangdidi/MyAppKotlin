@@ -89,7 +89,9 @@ abstract class BaseLddFragment : Fragment() {
             mIntent= Intent()
         }
         mIntent?.setClass(mContext,mClass)
-        bundle?.let { mIntent?.putExtras(it) }
+        //使用replaceExtras，而不使用putExtras，
+        //防止bundle存旧数据，场景：列表界面，新增、修改，传id
+        bundle?.let { mIntent?.replaceExtras(it) }
         startActivity(mIntent)
     }
     /**
@@ -100,7 +102,7 @@ abstract class BaseLddFragment : Fragment() {
             mIntent= Intent()
         }
         mIntent?.setClass(mContext,mClass)
-        bundle?.let { mIntent?.putExtras(it) }
+        bundle?.let { mIntent?.replaceExtras(it) }
         startActivityForResult(mIntent,requestCode)
     }
 

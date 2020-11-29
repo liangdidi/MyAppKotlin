@@ -88,7 +88,21 @@ abstract class BaseLddActivity : AppCompatActivity() {
         startActivityCustom(mClass,null)
     }
 
-    var mIntent:Intent?=null
+
+    var mBundle:Bundle?=null
+    fun getBaseBundle():Bundle{
+        if(null==mBundle){
+            Log.i("ldd","======mBundle初始化========")
+            mBundle= Bundle()
+        }else{
+            Log.i("ldd","======mBundle 大小========${mBundle?.size()}")
+            mBundle?.clear()
+            Log.i("ldd","======mBundle 清空========${mBundle?.size()}")
+        }
+        return mBundle!!
+    }
+
+    private var mIntent:Intent?=null
     /**
      * 携带数据跳转到新的页面
      */
@@ -97,7 +111,9 @@ abstract class BaseLddActivity : AppCompatActivity() {
             mIntent=Intent()
         }
         mIntent?.setClass(mContext,mClass)
-        bundle?.let { mIntent?.putExtras(it) }
+        //使用replaceExtras，而不使用putExtras，
+        //防止bundle存旧数据，场景：列表界面，新增、修改，传id
+        bundle?.let { mIntent?.replaceExtras(it) }
         startActivity(mIntent)
     }
     /**
@@ -108,7 +124,7 @@ abstract class BaseLddActivity : AppCompatActivity() {
             mIntent=Intent()
         }
         mIntent?.setClass(mContext,mClass)
-        bundle?.let { mIntent?.putExtras(it) }
+        bundle?.let { mIntent?.replaceExtras(it) }
         startActivityForResult(mIntent,requestCode)
     }
 

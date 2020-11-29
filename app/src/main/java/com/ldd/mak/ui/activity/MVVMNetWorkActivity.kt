@@ -1,5 +1,6 @@
 package com.ldd.mak.ui.activity
 
+import android.util.Log
 import androidx.lifecycle.ViewModelProvider
 import com.google.gson.Gson
 import com.ldd.mak.R
@@ -27,5 +28,11 @@ class MVVMNetWorkActivity:BaseActivity() {
         myViewModel.loginData.observe(this){
             textView3.text= Gson().toJson(it)
         }
+
+        val test1=intent.getStringExtra("test1")
+        val test2=intent.getStringExtra("test2")
+
+        Log.i("ldd", "======test1=$test1")
+        Log.i("ldd", "======test2=$test2")
     }
 }

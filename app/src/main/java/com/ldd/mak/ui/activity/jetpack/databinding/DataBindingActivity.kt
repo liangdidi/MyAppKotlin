@@ -1,5 +1,6 @@
 package com.ldd.mak.ui.activity.jetpack.databinding
 
+import android.util.Log
 import com.ldd.mak.R
 import com.ldd.mak.databinding.AcJetpackDataBindingBinding
 import com.ldd.mak.ui._base.BaseMVVMActivity
@@ -14,6 +15,12 @@ class DataBindingActivity:BaseMVVMActivity<MyViewModel,AcJetpackDataBindingBindi
 
     override fun initData() {
         dataBinding.myVM=viewModel
+        val test1=intent.getStringExtra("test1")
+        val test2=intent.getStringExtra("test2")
+
+        Log.i("ldd", "======test1=$test1")
+        Log.i("ldd", "======test2=$test2")
+
     }
 
 }
