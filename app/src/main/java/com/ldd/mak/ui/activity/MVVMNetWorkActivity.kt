@@ -1,6 +1,7 @@
 package com.ldd.mak.ui.activity
 
 import androidx.lifecycle.ViewModelProvider
+import com.google.gson.Gson
 import com.ldd.mak.R
 import com.ldd.mak.mvvm.viewmodel.LoginViewModel
 import com.ldd.mak.ui._base.BaseActivity
@@ -24,7 +25,7 @@ class MVVMNetWorkActivity:BaseActivity() {
         }
 
         myViewModel.loginData.observe(this){
-            textView3.text="成功了"
+            textView3.text= Gson().toJson(it)
         }
     }
 }

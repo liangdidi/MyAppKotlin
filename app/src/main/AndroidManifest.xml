@@ -48,7 +48,10 @@
         <activity android:name=".ui.activity.jetpack.livedata.LiveDataActivity" />
         <!--DataBinding简单使用，可翻转屏幕-->
         <activity android:name=".ui.activity.jetpack.databinding.DataBindingActivity" />
-
+        <!--协程使用-->
+        <activity
+            android:name=".ui.activity.CoroutineActivity"
+            android:screenOrientation="portrait" />
         <activity android:name=".ui.activity.MVVMNetWorkActivity" />
 
     </application>
