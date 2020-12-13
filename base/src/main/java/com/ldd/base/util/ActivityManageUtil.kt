@@ -28,7 +28,13 @@ object ActivityManageUtil {
     /**
      * 当前页面
      */
-    fun currentActivity(): Activity = activityStack.lastElement()
+    fun currentActivity(): Activity {
+        return if(activityStack.size>0){
+            activityStack.lastElement()
+        }else{
+            Activity()
+        }
+    }
 
     /**
      * 结束当前页面
