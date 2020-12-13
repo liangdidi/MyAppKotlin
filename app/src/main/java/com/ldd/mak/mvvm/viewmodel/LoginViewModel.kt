@@ -2,27 +2,18 @@ package com.ldd.mak.mvvm.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import com.ldd.mak.mvvm.model._base.BaseViewModel
 import com.ldd.mak.mvvm.model.entity.LoginEntity
-import com.ldd.mak.mvvm.model.network.RetrofitUtil
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import java.util.*
 
-class LoginViewModel:ViewModel() {
-    private val _loginData=MutableLiveData<LoginEntity>()
-    val loginData: LiveData<LoginEntity>
-        get()=_loginData
+class LoginViewModel: BaseViewModel() {
+    private val _loginData by lazy { MutableLiveData<LoginEntity>() }
+    val logData: LiveData<LoginEntity>
+        get() = _loginData
 
-    fun login(map:MutableMap<String,String>){
-        viewModelScope.launch {
-            withContext(Dispatchers.IO){
-                val loginEntity=RetrofitUtil.getInstance().apiService.login("登录", map)
-                withContext(Dispatchers.Main){
-                    _loginData.value=loginEntity
-                }
-            }
+    fun login(map:Map<String,String>) {
+        request(_loginData) {
+            apiServer.login("登录", map)
         }
     }
 

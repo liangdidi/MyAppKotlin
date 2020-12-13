@@ -12,7 +12,8 @@ import kotlinx.android.synthetic.main.l_base_title_bar.*
  * 基本Activity
  */
 abstract class BaseActivity : BaseLddActivity() {
-
+    /**是否使用DataBinding**/
+    var isUseDataBinding=false
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //初始化设置
@@ -22,12 +23,19 @@ abstract class BaseActivity : BaseLddActivity() {
 
         //加载子类布局
         if (getLayoutId() != 0) {
-            //是否想要公共标题栏
-            if (isWantTitleBar()) {
-                View.inflate(mContext, getLayoutId(), llBaseContent)
-            } else {
-                setContentView(getLayoutId())
+            if(isUseDataBinding){
+                //初始化DataBinding
+                initDataBinding()
+            }else{
+                //是否想要公共标题栏
+                if (isWantTitleBar()) {
+                    View.inflate(mContext, getLayoutId(), llBaseContent)
+                } else {
+                    setContentView(getLayoutId())
+                }
             }
+            //初始化ViewModel
+            initViewModel()
             //初始化数据
             initData()
         }else{
@@ -51,6 +59,16 @@ abstract class BaseActivity : BaseLddActivity() {
     protected abstract fun getLayoutId(): Int
     /**初始化数据 */
     protected abstract fun initData()
+
+    /**
+     * 供子类BaseVMActivity 初始化ViewModel操作
+     */
+    protected open fun initViewModel(){}
+
+    /**
+     * 供子类BaseVMDBActivity 初始化DataBinding操作
+     */
+    protected open fun initDataBinding() {}
 
     /**
      * 初始化设置

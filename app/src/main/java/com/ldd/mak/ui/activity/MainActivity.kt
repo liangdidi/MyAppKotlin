@@ -1,6 +1,5 @@
 package com.ldd.mak.ui.activity
 
-import android.os.Bundle
 import com.ldd.mak.R
 import com.ldd.mak.ui._base.BaseActivity
 import com.ldd.mak.ui.activity.jetpack.databinding.DataBindingActivity
@@ -23,7 +22,8 @@ class MainActivity : BaseActivity() {
             "5、ViewModel简单使用",
             "6、LiveData简单使用",
             "7、DataBinding简单使用",
-            "8、MVVM网络请求数据"
+            "8、MVVM网络请求数据",
+            "9、ViewBinding简单使用",
         )
         listView.adapter = MainAdapter(mContext, list)
 
@@ -45,6 +45,7 @@ class MainActivity : BaseActivity() {
                     bundle.putString("test2","测试1")
                     startActivityCustom(MVVMNetWorkActivity::class.java,bundle)
                 }
+                "9、ViewBinding简单使用" -> startActivityCustom(ViewBindingActivity::class.java)
             }
         }
 
