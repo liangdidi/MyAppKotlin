@@ -32,18 +32,15 @@ abstract class BaseViewModel : ViewModel() {
     val errorMessage: LiveData<String>
         get() = _errorMessage
 
-    /**
-     * 显示加载框
-     */
-    private fun showLoading() {
-        _loadingIsShow.value = true
-    }
+    private val _viewIsEnable by lazy { MutableLiveData<Boolean>() }
+    val viewIsEnable: LiveData<Boolean>
+        get() = _viewIsEnable
 
     /**
-     * 隐藏加载框
+     * 加载框是否显示
      */
-    private fun hideLoading() {
-        _loadingIsShow.value = false
+    private fun setIsShowLoading(isShowLoading: Boolean) {
+        _loadingIsShow.value = isShowLoading
     }
 
     /**
@@ -51,6 +48,13 @@ abstract class BaseViewModel : ViewModel() {
      */
     private fun setErrorMessage(message: String) {
         _errorMessage.value = message
+    }
+
+    /**
+     * 请求的view是否启用
+     */
+    private fun setIsEnableView(isEnableView: Boolean) {
+        _viewIsEnable.value = isEnableView
     }
 
     /**
@@ -65,49 +69,40 @@ abstract class BaseViewModel : ViewModel() {
         block: suspend CoroutineScope.() -> T
     ) {
         if (isShowLoading) {
-            showLoading()
+            setIsShowLoading(true)
         }
+        setIsEnableView(false)
 
         viewModelScope.launch {
             try {
                 //io线程网络请求
-                withContext(Dispatchers.IO) {
-                    val data = block()
-                    //主线程更新数据
-                    withContext(Dispatchers.Main) {
-                        when (data.code) {
-                            200 -> {
-                                if (data.success) {
-                                    liveData.value = data
-                                } else {
-                                    data.msg?.let {
-                                        setErrorMessage(it)
-                                    }
-                                }
-                            }
-                            else -> {
-                                data.msg?.let {
-                                    setErrorMessage(it)
-                                }
-                            }
+                val data = withContext(Dispatchers.IO) { block() }
+                //判断业务码
+                when (data.code) {
+                    200 ->
+                        if (data.success) {
+                            liveData.value = data
+                        } else {
+                            data.msg?.let { setErrorMessage(it) }
                         }
-
-                    }
+                    else ->
+                        data.msg?.let { setErrorMessage(it) }
 
                 }
             } catch (e: Exception) {
                 onError(e)
             } finally {
                 if (isShowLoading) {
-                    hideLoading()
+                    setIsShowLoading(false)
                 }
+                setIsEnableView(true)
             }
         }
     }
 
 
     private fun onError(e: Throwable) {
-        Log.i("ldd", "====onError==="+Gson().toJson(e))
+        Log.i("ldd", "====onError===" + Gson().toJson(e))
         when (e) {
             is HttpException -> {
                 when (e.code()) {

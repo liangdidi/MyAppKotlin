@@ -25,6 +25,9 @@ class MVVMNetWorkActivity: BaseVMActivity<LoginViewModel>() {
         mViewModel.logData.observe(this){
             textView3.text= Gson().toJson(it)
         }
+        mViewModel.viewIsEnable.observe(this){
+            button.isEnabled=it
+        }
 
         val test1=intent.getStringExtra("test1")
         val test2=intent.getStringExtra("test2")
